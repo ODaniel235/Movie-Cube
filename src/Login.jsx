@@ -12,12 +12,13 @@ export default function LoginPage() {
     : /^[a-z]+[\d]+@[a-z]{5,}[.][a-z]{2,4}/gi;
   const [regexDesign, setRegexDesign] = useState(null);
   const passwordFunction = (e) => {
-    oneText.test(e.target.value)
-      ? setPasswordInputted(true)
-      : setPasswordInputted(false);
-    passwordRegex.test(e.target.value)
+    const password = e.target.value;
+    password.length >= 6 && password.length <= 40
       ? setPasswordValid(true)
       : setPasswordValid(false);
+    password.length >= 1
+      ? setPasswordInputted(true)
+      : setPasswordInputted(false);
   };
   const changeInputType = (e) => {
     const convertToNumber = parseInt(e.target.value);
@@ -84,10 +85,10 @@ export default function LoginPage() {
             <div
               className={` bg-[rgb(51,51,51)] w-full py-3 rounded-md px-2 flex gap-1 items-center ${
                 passwordValid
-                  ? " border-b-2 border-b-green-600"
+                  ? "border-b-2 border-b-green-600"
                   : !passwordValid && passwordInputted
                   ? "border-b-2 border-b-red-600"
-                  : " border-none"
+                  : "border-none"
               }`}
             >
               <input
