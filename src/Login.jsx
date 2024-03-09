@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [check, setCheck] = useState(true);
   const regex = userInfoState
     ? /[0-9]{11}/gi
-    : /^[a-z]+[\d]+@[a-z]{5,}[.][a-z]{2,4}/gi;
+    : /^[a-z]+[\d]*@[a-z]{5,}[.][a-z]{2,4}/gi;
   const [regexDesign, setRegexDesign] = useState(null);
   const passwordFunction = (e) => {
     const password = e.target.value;
