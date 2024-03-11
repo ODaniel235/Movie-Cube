@@ -25,8 +25,8 @@ export default function LoginPage() {
     } else {
       setUserInfoState(false);
     }
-    const inputValue = e.target.value
-     inputValue.length >= 1 ? setCheck(false) : setCheck(true);
+    const inputValue = e.target.value;
+    inputValue.length >= 1 ? setCheck(false) : setCheck(true);
     regex.test(inputValue) ? setRegexDesign(true) : setRegexDesign(false);
   };
   return (
