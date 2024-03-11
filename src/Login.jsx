@@ -3,9 +3,7 @@ export default function LoginPage() {
   const [userInfoState, setUserInfoState] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null);
   const [passwordInputted, setPasswordInputted] = useState(false);
-  const passwordRegex = /[a-z0-9]{6,40}/gi;
   const [toggleVisible, setToggleVisible] = useState(false);
-  const oneText = /[a-z0-9]{1,}/gi;
   const [check, setCheck] = useState(true);
   const regex = userInfoState
     ? /[0-9]{11}/gi
@@ -27,8 +25,9 @@ export default function LoginPage() {
     } else {
       setUserInfoState(false);
     }
-    oneText.test(e.target.value) ? setCheck(false) : setCheck(true);
-    regex.test(e.target.value) ? setRegexDesign(true) : setRegexDesign(false);
+    const inputValue = e.target.value
+     inputValue.length >= 1 ? setCheck(false) : setCheck(true);
+    regex.test(inputValue) ? setRegexDesign(true) : setRegexDesign(false);
   };
   return (
     <div className=" h-screen w-screen bg-black ">
