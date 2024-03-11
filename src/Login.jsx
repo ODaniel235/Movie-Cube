@@ -5,10 +5,14 @@ export default function LoginPage() {
   const [passwordInputted, setPasswordInputted] = useState(false);
   const [toggleVisible, setToggleVisible] = useState(false);
   const [check, setCheck] = useState(true);
+
+  //Creating a regex to determine if userinput is valid or not based on the input
   const regex = userInfoState
     ? /[0-9]{11}/gi
     : /^[a-z]+[\d]*@[a-z]{5,}[.][a-z]{2,4}/gi;
   const [regexDesign, setRegexDesign] = useState(null);
+
+  //creating password function
   const passwordFunction = (e) => {
     const password = e.target.value;
     password.length >= 6 && password.length <= 40
@@ -18,6 +22,8 @@ export default function LoginPage() {
       ? setPasswordInputted(true)
       : setPasswordInputted(false);
   };
+
+  //creating email input onChange function to determine the input type by manipulating states
   const changeInputType = (e) => {
     const convertToNumber = parseInt(e.target.value);
     if (!isNaN(convertToNumber)) {
