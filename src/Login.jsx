@@ -1,5 +1,6 @@
 import { useState } from "react";
-export default function LoginPage() {
+import { Link } from "react-router-dom";
+export default function LoginPage({ href }) {
   const [userInfoState, setUserInfoState] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null);
   const [passwordInputted, setPasswordInputted] = useState(false);
@@ -122,12 +123,14 @@ export default function LoginPage() {
               Your password must have more than 6 characters
             </p>
           </div>
-          <button
-            className=" w-full px-2 py-3 rounded-md text-white bg-[#e50914] mt-0"
-            type="submit"
-          >
-            Sign in
-          </button>
+          <Link to={href}>
+            <button
+              className=" w-full px-2 py-3 rounded-md text-white bg-[#e50914] mt-0"
+              type="submit"
+            >
+              Sign in
+            </button>
+          </Link>
           <div className=" w-full h-fit py-2 bg-inherit flex justify-between">
             <section className=" flex gap-2">
               <input
