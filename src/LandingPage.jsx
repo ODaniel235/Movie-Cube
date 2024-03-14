@@ -39,7 +39,7 @@ export default function LandingPage() {
   };
   return (
     <>
-      <header className="w-screen bg-gradient-to-r from-black to-red-700 h-[20vh] flex justify-center items-center  -ml-20">
+      <header className=" sm:h-[12vh] w-screen bg-gradient-to-r from-black to-red-700 flex justify-center items-center sm:-ml-20 h-fit ">
         <form className=" w-4/6 flex justify-center -ml-12 gap-1 items-center">
           <input
             type="text"
@@ -64,8 +64,8 @@ export default function LandingPage() {
           </button>
         </form>
       </header>
-      <main className="w-full h-screen bg-[#10141E] p-12 px-16">
-        <div className=" flex  flex-wrap justify-center gap-3">
+      <main className="w-full flex justify-center sm:inline-block  h-screen bg-[#10141E] sm:py-6 py-6">
+        <div className=" w-[90vw] items-center sm:w-full flex flex-wrap justify-center gap-1 sticky ">
           {genres.map((genre, index) => (
             <Genre
               key={index}

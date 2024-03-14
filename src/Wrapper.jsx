@@ -6,7 +6,7 @@ export default function Wrapper() {
     <>
       <OutletWrapper>
         <Routes>
-          <Route path="*" element={<LandingPage />} />
+          <Route path="/movies" element={<LandingPage />} />
         </Routes>
       </OutletWrapper>
     </>

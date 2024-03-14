@@ -14,7 +14,7 @@ export default function OutletWrapper(props) {
   return (
     <>
       <div className="flex">
-        <aside className=" h-screen hidden w-[22%] px-2 sm:flex flex-col gap-3 items-center bg-black md:px-2">
+        <aside className=" h-screen hidden w-[30%] px-2 sm:flex flex-col gap-3 items-center bg-black md:px-2">
           <svg
             className="  mt-6"
             xmlns="http://www.w3.org/2000/svg"
