@@ -12,6 +12,7 @@ export default function LoginPage({ href }) {
     ? /[0-9]{11}/gi
     : /^[a-z]+[\d]*@[a-z]{5,}[.][a-z]{2,4}/gi;
   const [regexDesign, setRegexDesign] = useState(null);
+  const [submitValid, setSubmitValid] = useState(true);
 
   //creating password function
   const passwordFunction = (e) => {
@@ -35,6 +36,10 @@ export default function LoginPage({ href }) {
     const inputValue = e.target.value;
     inputValue.length >= 1 ? setCheck(false) : setCheck(true);
     regex.test(inputValue) ? setRegexDesign(true) : setRegexDesign(false);
+  };
+  //Creating a submit function
+  const submitFunction = () => {
+    passwordValid && regexDesign ? setSubmitValid(true) : setSubmitValid(false);
   };
   return (
     <div className=" h-screen w-screen bg-black ">
@@ -123,14 +128,24 @@ export default function LoginPage({ href }) {
               Your password must have more than 6 characters
             </p>
           </div>
-          <Link to={href}>
-            <button
-              className=" w-full px-2 py-3 rounded-md text-white bg-[#e50914] mt-0"
-              type="submit"
+          <div>
+            <Link to={passwordValid && regexDesign ? href : null}>
+              <button
+                className=" w-full px-2 py-3 rounded-md text-white bg-[#e50914] mt-0"
+                type="submit"
+                onClick={submitFunction}
+              >
+                Sign in
+              </button>
+            </Link>
+            <p
+              className={` text-red-700 text-sm ${
+                !submitValid ? "visible" : "hidden"
+              }`}
             >
-              Sign in
-            </button>
-          </Link>
+              Please validate your form and resubmit
+            </p>
+          </div>
           <div className=" w-full h-fit py-2 bg-inherit flex justify-between">
             <section className=" flex gap-2">
               <input
