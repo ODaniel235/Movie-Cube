@@ -37,9 +37,10 @@ export default function LandingPage() {
     setInput("");
     setCross(false);
   };
-  const [clickedMovie, setClickedMovie] = useState(null);
+  const [clickedMovie, setClickedMovie] = useState("look");
   const appendInfo = (i) => {
-    setClickedMovie(i);
+    const convertToNumber = parseInt(i);
+    setClickedMovie(convertToNumber);
   };
   const genreSelectFunction = (i) => {
     setActiveGenre(i);
@@ -91,7 +92,7 @@ export default function LandingPage() {
       </header>
       <main
         className={` w-full items-center ${
-          clickedMovie == null ? "flex sm:inline-block" : "hidden"
+          typeof clickedMovie == "string" ? "flex sm:inline-block" : "hidden"
         }  h-screen bg-[#10141E] sm:py-6  flex-col`}
       >
         <div className=" w-[90vw] items-center mt-4 sm:w-full flex flex-wrap justify-center gap-1 sticky ">
@@ -163,7 +164,10 @@ export default function LandingPage() {
           ))}
         </div>
       </main>
-      <MovieClick classAdded={appendInfo == null ? "hidden" : " visible"} />
+      {/* <MovieClick
+        classAdded={typeof clickedMovie == "string" ? "hidden" : "visible"}
+        imageFromApi={`https://image.tmdb.org/t/p/w500${apiData[clickedMovie].poster_path}`}
+      /> */}
     </>
   );
 }
