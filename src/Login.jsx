@@ -69,7 +69,7 @@ export default function LoginPage({ href }) {
         <h1 className="text-white text-3xl mb-2 sm:text-2xl font-semibold justify-self-start">
           Sign In
         </h1>
-        <form className="flex flex-col gap-6">
+        <form className="flex flex-col gap-6" action="/movies">
           <div>
             <input
               className={` bg-[rgb(51,51,51)] w-full px-2 py-3 rounded-md text-[#9CA3AF] outline-none  ${

@@ -1,11 +1,11 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
 export default function OutletWrapper(props) {
   const wrapper = [
-    { name: "Genres", href: "///" },
-    { name: "Trending", href: "///" },
-    { name: "Upcoming", href: "///" },
-    { name: "Favorites", href: "///" },
+    { name: "Genres", href: "movies/genres" },
+    { name: "Trending", href: "movies/trending" },
+    { name: "Upcoming", href: "movies/upcoming" },
+    { name: "Favorites", href: "movies/favorites" },
   ];
   const [indexState, setIndex] = useState(0);
   const changeIndexFunction = (i) => {
@@ -29,8 +29,9 @@ export default function OutletWrapper(props) {
             Movie-Cube
           </h2>
           {wrapper.map((wrap, index) => (
-            <button
-              className={` mb-1 ${
+            <Link
+              to={index == 0 ? "/movies" : wrap.href}
+              className={` text-center mb-1 ${
                 indexState == index
                   ? "bg-red-500/20 border-2 border-red-600"
                   : "bg-gray-500/20"
@@ -39,7 +40,7 @@ export default function OutletWrapper(props) {
               onClick={() => changeIndexFunction(index)}
             >
               {wrap.name}
-            </button>
+            </Link>
           ))}
         </aside>
 
