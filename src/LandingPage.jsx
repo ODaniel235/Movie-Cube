@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Genre from "./GenreSelection";
+import MovieClick from "./MovieClick";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   const [cross, setCross] = useState(false);
@@ -34,6 +36,10 @@ export default function LandingPage() {
     e.preventDefault();
     setInput("");
     setCross(false);
+  };
+  const [clickedMovie, setClickedMovie] = useState(null);
+  const appendInfo = (i) => {
+    setClickedMovie(i);
   };
   const genreSelectFunction = (i) => {
     setActiveGenre(i);
@@ -83,7 +89,11 @@ export default function LandingPage() {
           </button>
         </form>
       </header>
-      <main className="w-full flex  items-center sm:inline-block  h-screen bg-[#10141E] sm:py-6  flex-col">
+      <main
+        className={` w-full items-center ${
+          clickedMovie == null ? "flex sm:inline-block" : "hidden"
+        }  h-screen bg-[#10141E] sm:py-6  flex-col`}
+      >
         <div className=" w-[90vw] items-center mt-4 sm:w-full flex flex-wrap justify-center gap-1 sticky ">
           {genres.map((genre, index) => (
             <Genre
@@ -137,18 +147,23 @@ export default function LandingPage() {
                   )}`}
                 </h1>
               </div>{" "}
-              <a className=" h-full w-full shadow-lg absolute z-10" href="">
+              <Link
+                className=" h-full w-full shadow-lg absolute z-10"
+                href=""
+                onClick={() => appendInfo(index)}
+              >
                 <img
                   src={`
-            https://image.tmdb.org/t/p/w500${api.poster_path}`}
+                        https://image.tmdb.org/t/p/w500${api.poster_path}`}
                   alt="Movie Poster"
                   className=" absolute h-full w-full hover:scale-125 transition ease-in-out 0.5s"
                 />
-              </a>
+              </Link>
             </div>
           ))}
         </div>
       </main>
+      <MovieClick classAdded={appendInfo == null ? "hidden" : " visible"} />
     </>
   );
 }

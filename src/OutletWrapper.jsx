@@ -11,8 +11,43 @@ export default function OutletWrapper(props) {
   const changeIndexFunction = (i) => {
     setIndex(i);
   };
+  
+  const [buttonState, setButtonState] = useState(true);
   return (
     <>
+      {buttonState ? (
+        <button
+          onClick={() => setButtonState(!buttonState)}
+          className="z-40 text-3xl text-white fixed right-0 bottom-0 m-6 p-4 duration-150 rounded-full active:scale-90 bg-red-600 block md:hidden"
+        >
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"></path>
+          </svg>
+        </button>
+      ) : (
+        <button
+          onClick={() => setButtonState(!buttonState)}
+          className="z-40 text-3xl text-white fixed right-0 bottom-0 m-6 p-4 duration-150 rounded-full active:scale-90 bg-red-600 block md:hidden"
+        >
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path>
+          </svg>
+        </button>
+      )}
       <div className="flex">
         <aside className=" h-screen hidden w-[25%] px-2 sm:flex flex-col gap-3 items-center bg-black md:px-2">
           <svg
