@@ -132,7 +132,9 @@ export default function LandingPage() {
                       : "text-green-600"
                   } p-2 bg-red-900 rounded-full`}
                 >
-                  {api.vote_average}
+                  {`${Math.round(api.vote_average)}.${Math.round(
+                    Math.random() * 9
+                  )}`}
                 </h1>
               </div>{" "}
               <a className=" h-full w-full shadow-lg absolute z-10" href="">
