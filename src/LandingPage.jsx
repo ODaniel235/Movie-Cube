@@ -101,7 +101,7 @@ export default function LandingPage() {
         <h1 className="text-red-600 text-center font-bold text-3xl mt-3">
           Genres
         </h1>
-        <div className=" w-full md:p-2 flex flex-wrap relative justify-evenly md:justify-around overflow-hidden h-auto">
+        <div className=" w-full md:p-2 flex flex-wrap relative justify-evenly md:justify-around h-auto">
           {apiData.map((api, index) => (
             <div
               key={index}
@@ -123,7 +123,15 @@ export default function LandingPage() {
                 <h1 className="text-white text-xl font-semibold  break-normal break-words">
                   {api.original_title}
                 </h1>
-                <h1 className="font-bold text-orange-400 p-2 bg-red-900 rounded-full">
+                <h1
+                  className={`font-bold ${
+                    api.vote_average <= 6
+                      ? "text-red-600"
+                      : api.vote_average >= 6 && api.vote_average <= 7
+                      ? "text-orange-400"
+                      : "text-green-600"
+                  } p-2 bg-red-900 rounded-full`}
+                >
                   {api.vote_average}
                 </h1>
               </div>{" "}

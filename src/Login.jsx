@@ -164,7 +164,7 @@ export default function LoginPage({ href }) {
           </div>
           <p className=" text-[#9CA3AF]">
             New to Movie Cube?{"  "}
-            <a className=" font-bold hover:cursor-pointer">Sign up now</a>
+            <Link to={'sign-up'} className=" font-bold hover:cursor-pointer">Sign up now</Link>
           </p>
         </form>
       </div>
