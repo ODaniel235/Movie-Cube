@@ -568,6 +568,10 @@ video {
   bottom: 0px;
 }
 
+.bottom-12 {
+  bottom: 3rem;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -610,6 +614,10 @@ video {
 
 .m-6 {
   margin: 1.5rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-4 {
@@ -687,10 +695,6 @@ video {
   height: 410px;
 }
 
-.h-\[80vh\] {
-  height: 80vh;
-}
-
 .h-auto {
   height: auto;
 }
@@ -738,6 +742,11 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .cursor-pointer {
@@ -800,6 +809,10 @@ video {
   overflow-x: hidden;
 }
 
+.text-wrap {
+  text-wrap: wrap;
+}
+
 .text-nowrap {
   text-wrap: nowrap;
 }
@@ -850,6 +863,11 @@ video {
   border-color: rgb(220 38 38 / var(--tw-border-opacity));
 }
 
+.border-red-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
+
 .border-b-green-600 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(22 163 74 / var(--tw-border-opacity));
@@ -884,11 +902,6 @@ video {
   background-color: rgb(107 114 128 / 0.2);
 }
 
-.bg-green-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
-}
-
 .bg-inherit {
   background-color: inherit;
 }
@@ -910,6 +923,14 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-600\/20 {
+  background-color: rgb(220 38 38 / 0.2);
+}
+
+.bg-red-600\/30 {
+  background-color: rgb(220 38 38 / 0.3);
 }
 
 .bg-gradient-to-r {
@@ -953,6 +974,11 @@ video {
   padding-right: 1rem;
 }
 
+.px-\[50vw\] {
+  padding-left: 50vw;
+  padding-right: 50vw;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -968,8 +994,22 @@ video {
   padding-bottom: 0.4rem;
 }
 
+.px-\[20vw\] {
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.px-\[10vw\] {
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
 .text-center {
   text-align: center;
+}
+
+.font-\[\'Roboto\'\] {
+  font-family: 'Roboto';
 }
 
 .text-2xl {
@@ -1178,6 +1218,10 @@ body {
     height: 12vh;
   }
 
+  .sm\:h-\[80vh\] {
+    height: 80vh;
+  }
+
   .sm\:w-4\/6 {
     width: 66.666667%;
   }
@@ -1241,6 +1285,10 @@ body {
     height: 360px;
   }
 
+  .md\:h-\[82vh\] {
+    height: 82vh;
+  }
+
   .md\:w-2\/6 {
     width: 33.333333%;
   }
@@ -1260,5 +1308,10 @@ body {
   .md\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }

@@ -57,6 +57,7 @@ export default function LandingPage() {
         }
         const data = await response.json();
         setApiData(data.results);
+        console.log(data.results);
       } catch (error) {
         console.error();
       }
@@ -117,6 +118,7 @@ export default function LandingPage() {
             <div
               key={index}
               className="card relative w-full md:w-60 h-[410px] md:h-[360px] my-3 mx-4 md:my-5 md:mx-0 cursor-pointer rounded-xl overflow-hidden"
+              onClick={() => appendInfo(index)}
             >
               <button className="absolute bg-black text-white p-2 z-20 right-0 m-3 rounded-full text-xl">
                 <svg
@@ -148,11 +150,7 @@ export default function LandingPage() {
                   )}`}
                 </h1>
               </div>{" "}
-              <Link
-                className=" h-full w-full shadow-lg absolute z-10"
-                href=""
-                onClick={() => appendInfo(index)}
-              >
+              <Link className=" h-full w-full shadow-lg absolute z-10" href="">
                 <img
                   src={`
                         https://image.tmdb.org/t/p/w500${api.poster_path}`}
@@ -164,10 +162,13 @@ export default function LandingPage() {
           ))}
         </div>
       </main>
-      {/* <MovieClick
+      <MovieClick
         classAdded={typeof clickedMovie == "string" ? "hidden" : "visible"}
-        imageFromApi={`https://image.tmdb.org/t/p/w500${apiData[clickedMovie].poster_path}`}
-      /> */}
+        imageFromApi={`https://image.tmdb.org/t/p/w500${apiData[clickedMovie]?.poster_path}`}
+        nameFromApi={apiData[clickedMovie]?.original_title}
+        overview={apiData[clickedMovie]?.overview}
+        releaseDate={apiData[clickedMovie]?.release_date}
+      />
     </>
   );
 }
