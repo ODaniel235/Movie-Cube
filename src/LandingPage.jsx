@@ -45,18 +45,18 @@ export default function LandingPage() {
   const genreSelectFunction = (i) => {
     setActiveGenre(i);
   };
+  const myApiKey = import.meta.env.VITE_API_KEY;
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://api.themoviedb.org/3/discover/movie?api_key=2e71c7d4dadeeef620488065d4a88a4d"
+          `https://api.themoviedb.org/3/discover/movie?${myApiKey}`
         );
         if (!response.ok) {
           throw new Error("Could not fetch data");
         }
         const data = await response.json();
         setApiData(data.results);
-        console.log(apiData);
       } catch (error) {
         console.error();
       }

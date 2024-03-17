@@ -4,7 +4,6 @@ import "./styles/output.css";
 import Wrapper from "./Wrapper";
 import ProtectedRoute from "./ProtectedRoute";
 import { useState } from "react";
-
 function App() {
   const [isAuth, setIsAuth] = useState(true);
   return (
