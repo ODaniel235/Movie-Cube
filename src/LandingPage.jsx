@@ -91,11 +91,7 @@ export default function LandingPage() {
           </button>
         </form>
       </header>
-      <main
-        className={` w-full items-center ${
-          typeof clickedMovie == "string" ? "flex sm:inline-block" : "hidden"
-        }  h-screen bg-[#10141E] sm:py-6  flex-col`}
-      >
+      <main className=" w-full items-center flex sm:inline-block h-screen bg-[#10141E] sm:py-6  flex-col">
         <div className=" w-[90vw] items-center mt-4 sm:w-full flex flex-wrap justify-center gap-1 sticky ">
           {genres.map((genre, index) => (
             <Genre
@@ -162,13 +158,6 @@ export default function LandingPage() {
           ))}
         </div>
       </main>
-      <MovieClick
-        classAdded={typeof clickedMovie == "string" ? "hidden" : "visible"}
-        imageFromApi={`https://image.tmdb.org/t/p/w500${apiData[clickedMovie]?.poster_path}`}
-        nameFromApi={apiData[clickedMovie]?.original_title}
-        overview={apiData[clickedMovie]?.overview}
-        releaseDate={apiData[clickedMovie]?.release_date}
-      />
     </>
   );
 }

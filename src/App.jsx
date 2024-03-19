@@ -9,7 +9,7 @@ function App() {
   const [email, setEmail] = useState();
   const [passwords, setPassword] = useState();
   const [index, setIndex] = useState();
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   const setAuthFunction = (regex) => {
     for (let i = 0; i < userLoginApi.length; i++) {
       userLoginApi[i].email === email && userLoginApi[i].password === passwords

@@ -1,12 +1,7 @@
 export default function MovieClick({
-  classAdded,
-  imageFromApi,
-  nameFromApi,
-  overview,
-  releaseDate,
 }) {
   return (
-    <main className={` ${classAdded} h-screen w-[100%] `}>
+    <main className={` h-screen w-[100%] `}>
       <div className="relative h-auto md:h-[82vh] flex justify-center bg-black">
         <img
           src={imageFromApi}
