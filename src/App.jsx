@@ -22,7 +22,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<LandingPage />} />
+        <Route
+          path=""
+          element={
+            <ProtectedRoute
+              Component={Wrapper}
+              isAuth={isAuth}
+              Redirect={"/login"}
+            />
+          }
+        />
         <Route
           path="/login"
           element={
