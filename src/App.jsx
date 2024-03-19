@@ -10,9 +10,7 @@ function App() {
   const [email, setEmail] = useState();
   const [passwords, setPassword] = useState();
   const [index, setIndex] = useState();
-  const [isAuth, setIsAuth] = useState(
-    JSON.parse(localStorage.getItem("Authenticated")) || false
-  );
+  const [isAuth, setIsAuth] = useState(false);
   const setAuthFunction = (regex) => {
     for (let i = 0; i < userLoginApi.length; i++) {
       userLoginApi[i].email === email && userLoginApi[i].password === passwords
@@ -20,7 +18,6 @@ function App() {
         : setIsAuth(false);
     }
     isAuth ? regex(true) : regex(false);
-    localStorage.setItem(JSON.stringify("Authenticated", isAuth));
   };
   return (
     <BrowserRouter>
