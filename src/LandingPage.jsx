@@ -57,7 +57,6 @@ export default function LandingPage() {
         }
         const data = await response.json();
         setApiData(data.results);
-        console.log(data.results);
       } catch (error) {
         console.error();
       }
