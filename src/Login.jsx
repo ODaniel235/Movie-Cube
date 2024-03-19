@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function LoginPage({ href }) {
+export default function LoginPage({
+  href, pushEmail, pushPassword, setAuth
+}) {
   const [userInfoState, setUserInfoState] = useState(null);
   const [passwordValid, setPasswordValid] = useState(null);
   const [passwordInputted, setPasswordInputted] = useState(false);
   const [toggleVisible, setToggleVisible] = useState(false);
   const [check, setCheck] = useState(true);
-
   //Creating a regex to determine if userinput is valid or not based on the input
   const regex = userInfoState
     ? /[0-9]{11}/gi
@@ -17,9 +18,11 @@ export default function LoginPage({ href }) {
   //creating password function
   const passwordFunction = (e) => {
     const password = e.target.value;
+    pushPassword(password)
     password.length >= 6 && password.length <= 40
       ? setPasswordValid(true)
       : setPasswordValid(false);
+
     password.length >= 1
       ? setPasswordInputted(true)
       : setPasswordInputted(false);
@@ -36,10 +39,13 @@ export default function LoginPage({ href }) {
     const inputValue = e.target.value;
     inputValue.length >= 1 ? setCheck(false) : setCheck(true);
     regex.test(inputValue) ? setRegexDesign(true) : setRegexDesign(false);
+    pushEmail(inputValue)
   };
   //Creating a submit function
-  const submitFunction = () => {
+  const submitFunction = (e) => {
+    e.preventDefault();
     passwordValid && regexDesign ? setSubmitValid(true) : setSubmitValid(false);
+    setAuth(setSubmitValid)
   };
   return (
     <div className=" h-screen w-screen bg-black ">
@@ -143,7 +149,7 @@ export default function LoginPage({ href }) {
                 !submitValid ? "visible" : "hidden"
               }`}
             >
-              Please validate your form and resubmit
+              Password or Contact invalid
             </p>
           </div>
           <div className=" w-full h-fit py-2 bg-inherit flex justify-between">
@@ -164,7 +170,9 @@ export default function LoginPage({ href }) {
           </div>
           <p className=" text-[#9CA3AF]">
             New to Movie Cube?{"  "}
-            <Link to={'sign-up'} className=" font-bold hover:cursor-pointer">Sign up now</Link>
+            <Link to={"sign-up"} className=" font-bold hover:cursor-pointer">
+              Sign up now
+            </Link>
           </p>
         </form>
       </div>
