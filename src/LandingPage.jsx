@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { defineConfig } from "vite";
+import dotenv from "dotenv";
 import Genre from "./GenreSelection";
 import MovieClick from "./MovieClick";
 import { Link } from "react-router-dom";
+
+dotenv.config();
 
 export default function LandingPage() {
   const [cross, setCross] = useState(false);
