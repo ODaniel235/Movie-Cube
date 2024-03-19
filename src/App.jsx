@@ -4,7 +4,6 @@ import "./styles/output.css";
 import Wrapper from "./Wrapper";
 import ProtectedRoute from "./ProtectedRoute";
 import { useState } from "react";
-import LandingPage from "./LandingPage";
 const userLoginApi = [{ email: "test1234@gmail.com", password: "test123456" }];
 function App() {
   const [email, setEmail] = useState();
