@@ -1,46 +1,58 @@
-import express from "express";
+/* import express from "express";
 import mongoose from "mongoose";
-import { LINK } from "./config.js";
-import { User } from "./users.js";
-const cube = express();
-cube.use(express());
+import dotenv from "dotenv";
+import path from "path";
+import router from "./route.js";
+import router from "./route.js";
+dotenv.config();
+const connectString = process.env.URL;
+const app = express();
+app.use(express.json());
+const staticDir = path.join(process.cwd(), "/");
 
-//Adding a user
-cube.post("/users", async (req, res) => {
-  try {
-    if (!req.body.email || req.body.password) {
-      res.status(450).send("Please fill out all fields");
-    }
-    const newUser = {
-      email: req.email,
-      password: req.password,
-    };
-    const addUser = await User.create(newUser);
-    return res.status(201).send(addUser);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ message: "Could not log you in" });
-  }
+app.get("/", (req, res) => {
+  res.sendFile(path.join(staticDir, "index.html"));
 });
 
-//Fetching all users
-cube.get("/users", async (req, res) => {
-  try {
-    const allUsers = await User.find({});
-    res.status(200).send(allUsers);
-  } catch (error) {
-    console.log(error);
-    return res.status(501).send({ message: "Could not fetch" });
-  }
-});
+app.use("/products", router);
+app.use()
 mongoose
-  .connect(LINK)
+  .connect(connectString)
   .then(() => {
-    console.log("Connected");
-    cube.listen(5555, () => {
-      console.log("Welcome");
+    console.log("Connected to server");
+    app.listen(3000, () => {
+      console.log("Server is listening");
     });
   })
   .catch((error) => {
     console.log(error);
   });
+
+app.get("/", (req, res) => {
+  res.status(201).send("<h1>Hello</h1>");
+});
+*/
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import router from "./Routes/routes.js";
+dotenv.config();
+const app = express();
+app.use(express.json());
+app.use(router);
+const connectString = process.env.URL;
+mongoose
+  .connect(connectString)
+  .then(() => {
+    console.log("Connected to server");
+    app.listen(3000, () => {
+      console.log("Server is listening");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+app.get("/", (req, res) => {
+  res.status(201).send("<h1>Hello</h1>");
+});
