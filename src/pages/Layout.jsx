@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import OutletWrapper from "./OutletWrapper";
 import LandingPage from "./LandingPage";
 import SingleMoviePage from "./SingleMovie";
+import Trending from "./Trending";
+import Upcoming from "./Upcoming";
 export default function Layout() {
   const [isAuthorizing, setIsAuthorizing] = useState(true);
   const navigate = useNavigate();
@@ -39,6 +41,8 @@ export default function Layout() {
               path="*"
               element={<LandingPage isAuthorizing={isAuthorizing} />}
             />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/movie/:id" element={<SingleMoviePage />} />
           </Routes>
         </OutletWrapper>

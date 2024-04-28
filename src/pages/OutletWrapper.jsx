@@ -1,12 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 const asideGenre = [
-  { name: "Genres" },
-  { name: "Trending" },
-  { name: "Upcoming" },
-  { name: "Favourites" },
+  { name: "Genres", link: "/genres" },
+  { name: "Trending", link: "/trending" },
+  { name: "Upcoming", link: "upcoming" },
+  { name: "Account", link: "/user" },
 ];
 export default function OutletWrapper(props) {
-  const [asideIndex, setAsideIndex] = useState(0);
+  const [activeLink, setActiveLink] = useState("");
+  const [asideIndex, setAsideIndex] = useState(
+    parseInt(localStorage.getItem("currentLocation"), 10) || 0
+  );
+
+  const location = useLocation();
+useEffect(() => {
+  if(activeLink === '/genres'){
+    setAsideIndex(0)
+    localStorage.setItem('currentLocation', asideIndex)
+  }else if(activeLink === '/trending'){
+    setAsideIndex(1)
+    localStorage.setItem("currentLocation", asideIndex);
+  }else if(activeLink === '/upcoming'){
+    setAsideIndex(2)
+    localStorage.setItem("currentLocation", asideIndex);
+  }else{
+    setAsideIndex(3)
+    localStorage.setItem("currentLocation", asideIndex);
+  }
+}, [activeLink, asideIndex]);
+  useEffect(() => {
+    setActiveLink(location.pathname);
+    localStorage.setItem("activeLink", location.pathname);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    localStorage.setItem("currentLocation", asideIndex);
+  }, [asideIndex]);
+
   return (
     <div className=" w-screen flex flex-row">
       <aside className=" h-screen hidden w-[25%] px-2 sm:flex flex-col gap-3 items-center bg-black md:px-2">
@@ -24,17 +54,20 @@ export default function OutletWrapper(props) {
           Movie-Cube
         </h2>
         {asideGenre.map((genre, index) => (
-          <a
+          <Link
+            to={genre.link}
             className={`text-center mb-1 text-white text-md font-medium w-5/6 py-[0.4rem] hover:border-2 hover:border-red-600  transition ease-in-out 1s hover:bg-red-500/20 rounded-md ${
               index === asideIndex
                 ? "border-red-600 bg-red-500/20 border-2"
                 : " bg-gray-500/20 border-2 border-gray-600"
             }`}
             key={index}
-            onClick={() => setAsideIndex(index)}
+            onClick={() => {
+              setAsideIndex(index);
+            }}
           >
             {genre.name}
-          </a>
+          </Link>
         ))}
       </aside>
       <main className=" h-screen overflow-x-hidden w-[100%] bg-[#10141E]">
