@@ -85,7 +85,11 @@ export default function OutletWrapper(props) {
                 ? "border-red-600 bg-red-500/20 border-2"
                 : " bg-gray-500/20 border-2 border-gray-600"
             }`}
-            onClick={() => setAsideIndex(index)}
+            onClick={() => {
+              setMenuIsOpened(false)
+              setAsideIndex(index)}
+              
+            }
           >{genre.name}</Link>
         ))}
       </nav>
