@@ -75,7 +75,7 @@ export default function OutletWrapper(props) {
           </Link>
         ))}
       </aside>
-      <nav className={`z-10 w-2/3 flex flex-col top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${menuIsOpend ? 'open-menu' : 'close-menu'}`}>
+      <nav className={`z-20 w-2/3 flex flex-col top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${menuIsOpend ? 'open-menu' : 'close-menu'}`}>
         {asideGenre.map((genre, index) => (
           <Link
             to={genre.link}
