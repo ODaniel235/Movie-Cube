@@ -80,7 +80,7 @@ export default function OutletWrapper(props) {
           <Link
             to={genre.link}
             key={genre.name}
-            className={`text-center mb-1 text-white text-md font-medium w-5/6 py-[0.4rem] hover:border-2 hover:border-red-600  transition ease-in-out 1s hover:bg-red-500/20 rounded-md ${
+            className={`text-center mb-1 text-white text-md  font-medium w-5/6 py-[0.4rem] hover:border-2 hover:border-red-600  transition ease-in-out 1s hover:bg-red-500/20 rounded-md ${
               index === asideIndex
                 ? "border-red-600 bg-red-500/20 border-2"
                 : " bg-gray-500/20 border-2 border-gray-600"
@@ -97,7 +97,7 @@ export default function OutletWrapper(props) {
         onClick={() => {
           setMenuIsOpened(!menuIsOpend);
         }}
-        className={`visible h-20 w-20 rounded-full bg-red-800 bottom-7 right-10 md:hidden z-20 absolute ${
+        className={`visible h-20 w-20 rounded-full bg-red-800 bottom-7 right-10 md:hidden z-40 absolute ${
           menuIsOpend ? "nav-animate" : "nav-close"
         } flex p-1 justify-center items-center`}
       >
