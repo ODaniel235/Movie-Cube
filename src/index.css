@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-animate{
+    animation: nav-animation 0.8s ease-in-out;
+}
+.nav-close{
+    animation: nav-close 0.8s ease-in-out;
+}
+.open-menu{
+    animation: open-nav 0.5s ease-in-out;
+}
+.close-menu{
+    animation: close-menu 0.5s ease-in-out;
+    visibility: hidden;
+}
+@keyframes close-menu{
+    0%{
+        transform: translateY(40px);
+        opacity: 100;
+        visibility: visible;
+    }
+    30%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100vh);
+        visibility: hidden;
+    }
+}
+@keyframes open-nav{
+    0%{
+        transform: translateY(-80vh);
+        opacity: 0;
+    }
+    100%{
+        transform:  translateY(0);
+        opacity: 100;
+    }
+}
+@keyframes nav-close{
+    10%{
+        scale: 0.5;
+    }
+    60%{
+        scale: 1.3;
+    }
+}
+@keyframes nav-animation {
+    0%{
+        scale: 0.6;
+    }
+    50%{
+        scale: 1.2;
+    }
+    100%{
+        scale: 1;
+    }
+}

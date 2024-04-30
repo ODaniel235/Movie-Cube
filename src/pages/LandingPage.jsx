@@ -106,6 +106,7 @@ export default function LandingPage() {
   useEffect(() => {
     async function fetchDataById() {
       setApiFetching(true);
+      setInput('')
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?${myApiKey}&with_genres=${selectedGenre}`
