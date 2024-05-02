@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Genre from "../components/GenreSelection";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 export default function LandingPage() {
   axios.defaults.withCredentials = true;
@@ -102,19 +101,15 @@ export default function LandingPage() {
     setActiveGenre(i);
     setSelectedGenre(id);
   };
-  const myApiKey = import.meta.env.VITE_API_KEY;
   useEffect(() => {
     async function fetchDataById() {
       setApiFetching(true);
-      setInput('')
+      setInput("");
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?${myApiKey}&with_genres=${selectedGenre}`
+        const response = await axios.get(
+          `https://movie-cube-server.onrender.com/genre?${selectedGenre}`
         );
-        if (!response.ok) {
-          throw new Error("Could not fetch data");
-        }
-        const data = await response.json();
+        const data = response.data.data
         setApiData(data.results);
       } catch (error) {
         console.log(error);
@@ -127,33 +122,28 @@ export default function LandingPage() {
     async function fetchData() {
       setApiFetching(true);
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?${myApiKey}`
+        const response = await axios.get(
+          "https://movie-cube-server.onrender.com/allmovies"
         );
-        if (!response.ok) {
-          throw new Error("Could not fetch data");
+        if (response.status === 200) {
+          setApiFetching(false);
         }
-        const data = await response.json();
-        setApiData(data.results);
-        setApiFetching(false);
+        setApiData(response.data.data.results);
+        
       } catch (error) {
         console.error();
       }
     }
     fetchData();
   }, []);
+
   const fetcByTitle = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?${myApiKey}&query=${encodeURIComponent(
-          input
-        )}`
+      const response = await axios.get(
+        `https://movie-cube-server.onrender.com/search?${input}`
       );
-      if (!response.ok) {
-        throw new Error("Could not fetch data");
-      }
-      const data = await response.json();
+      const data = response.data.data
       if (data.results.length > 0) {
         setApiData(data.results);
       }
@@ -177,9 +167,7 @@ export default function LandingPage() {
             onChange={inputCross}
           />
           <button
-            className={`animate-bounce -ml-11 ${
-              cross ? "visible" : "hidden"
-            }`}
+            className={`animate-bounce -ml-11 ${cross ? "visible" : "hidden"}`}
             type="submit"
           >
             <svg

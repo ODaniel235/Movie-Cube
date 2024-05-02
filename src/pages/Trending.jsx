@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import axios from "axios";
 export default function Trending() {
   const navigate = useNavigate();
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -9,22 +10,19 @@ export default function Trending() {
   const fetchById = (id) => {
     navigate(`/movie/:${id}`);
   };
-  const myApiKey = import.meta.env.VITE_API_KEY;
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     const trending = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/trending/movie/day?${myApiKey}`
+        const response = await axios.get(
+          `https://movie-cube-server.onrender.com/trending`
         );
-        if (!response.ok) {
-          throw new Error("Could not fetch data");
-        }
-        const data = await response.json();
-        await setTrendingMovies(data.results);
+        const data = response.data.data.results;
+        await setTrendingMovies(data);
+        setIsLoading(false)
       } catch (error) {
         console.log("This is an error message: " + error);
-      } 
-      setIsLoading(false);
+      }
     };
     trending();
   }, []);
@@ -47,7 +45,7 @@ export default function Trending() {
             : trendingMovies.map((movie) => (
                 <div
                   key={movie.id}
-                  onClick={()=>fetchById(movie.id)}
+                  onClick={() => fetchById(movie.id)}
                   className="hover:cursor-pointer bg-gray-900 rounded-lg overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl"
                 >
                   <img

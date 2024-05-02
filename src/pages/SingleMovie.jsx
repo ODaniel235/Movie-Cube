@@ -17,19 +17,11 @@ export default function SingleMoviePage() {
   useEffect(() => {
     const fetchFunction = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${Id}?${
-            import.meta.env.VITE_API_KEY
-          }&append_to_response=credits`
+        const response = await axios.get(
+          `https://movie-cube-server.onrender.com/title?${Id}`
         );
-        const secondResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${Id}?${
-            import.meta.env.VITE_API_KEY
-          }&append_to_response=videos`
-        );
-        const data = await response.json();
-        const secondData = await secondResponse.json();
-        const videos = secondData.videos.results;
+        const data = response.data.data
+        const videos = data.videos.results;
         const trailer = videos.find(
           (video) => video.type === "Trailer" && video.site === "YouTube"
         );

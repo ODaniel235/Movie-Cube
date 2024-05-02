@@ -34,7 +34,7 @@ export default function LoginPage() {
     setIsLoading(false);
   };
   return (
-    <div className="h-screen w-screen bg-black overflow-hidden">
+    <div className="h-screen w-screen bg-black overflow-hidden ">
       <>
         <div className=" hidden sm:visible w-full h-full  z-0 relative sm:block overflow-hidden  bg-black text-black">
           <img

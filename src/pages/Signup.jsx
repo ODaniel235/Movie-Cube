@@ -62,7 +62,7 @@ export default function SignupPage() {
         </div>
         <div className=" top-[10%] md:top-[20%] sm:left-[15%] sm:top-[32%] overflow-hidden sm:w-4/6 absolute bg-black sm:bg-[rgba(0,0,0,.75)] p-4 sm:p-8 flex flex-col gap-2 sm:rounded-xl md:left-1/3 w-screen  md:w-2/6">
           <h1 className="text-white text-3xl mb-2 sm:text-2xl font-semibold justify-self-start">
-            Sign Up
+            Create Account
           </h1>
           <form className="flex flex-col gap-6 overflow-hidden">
             <div>

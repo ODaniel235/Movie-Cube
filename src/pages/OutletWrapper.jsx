@@ -13,6 +13,7 @@ const closeMenu =
 export default function OutletWrapper(props) {
   const [menuIsOpend, setMenuIsOpened] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const [justLoaded, setJustLoaded] = useState(false);
   const [asideIndex, setAsideIndex] = useState(
     parseInt(localStorage.getItem("currentLocation"), 10) || 0
   );
@@ -75,7 +76,11 @@ export default function OutletWrapper(props) {
           </Link>
         ))}
       </aside>
-      <nav className={`z-20 w-2/3 flex flex-col top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${menuIsOpend ? 'open-menu' : 'close-menu'}`}>
+      <nav
+        className={` ${!justLoaded ? 'hidden ' : 'flex'} z-20 w-2/3 flex-col md:hidden top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${
+          menuIsOpend  ? "open-menu" :  "close-menu"
+        }`}
+      >
         {asideGenre.map((genre, index) => (
           <Link
             to={genre.link}
@@ -86,16 +91,18 @@ export default function OutletWrapper(props) {
                 : " bg-gray-500/20 border-2 border-gray-600"
             }`}
             onClick={() => {
-              setMenuIsOpened(false)
-              setAsideIndex(index)}
-              
-            }
-          >{genre.name}</Link>
+              setMenuIsOpened(false);
+              setAsideIndex(index);
+            }}
+          >
+            {genre.name}
+          </Link>
         ))}
       </nav>
       <button
         onClick={() => {
           setMenuIsOpened(!menuIsOpend);
+          setJustLoaded(true);
         }}
         className={`visible h-20 w-20 rounded-full bg-red-800 bottom-7 right-10 md:hidden z-40 absolute ${
           menuIsOpend ? "nav-animate" : "nav-close"
