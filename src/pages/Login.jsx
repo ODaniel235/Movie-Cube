@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Alert from "../components/Alert";
 import Loader from "../components/Loader";
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -10,7 +11,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailValid, setEmailValid] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState(null);
   const submitFunction = async (e) => {
     e.preventDefault();
@@ -24,12 +24,14 @@ export default function LoginPage() {
         }
       );
       if (response.status === 200) {
-        console.log("User is Authorized");
-        navigate("/home");
+        Alert("success", "Success", "Logged in successfully");
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       }
     } catch (error) {
       console.log("Login Error: " + error);
-      setErrorMessage(error?.response?.data?.message);
+      Alert("error", "Error", error?.response?.data.message);
     }
     setIsLoading(false);
   };
@@ -109,9 +111,6 @@ export default function LoginPage() {
               >
                 {isLoading ? <Loader color={"black"} /> : "Sign In"}
               </button>
-              <p className=" text-red-700 text-md text-center">
-                {errorMessage}
-              </p>
             </div>
             <div className=" w-full h-fit py-2 bg-inherit flex justify-between">
               <section className=" flex gap-2">

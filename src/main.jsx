@@ -6,6 +6,7 @@ import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
 import Layout from "./pages/Layout";
 import Loader from "./components/Loader";
+import Alert from "./components/Alert";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -18,10 +19,6 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignupPage />,
-  },
-  {
-    path: "/loading",
-    element: <Loader />,
   },
 ]);
 

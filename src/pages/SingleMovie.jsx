@@ -29,7 +29,6 @@ export default function SingleMoviePage() {
           setTrailerLink(`https://www.youtube.com/embed/${trailer.key}`);
         }
         await setFetchById(data);
-        console.log({ fetchById });
         setIsFetching(false);
       } catch (error) {
         console.log(error);

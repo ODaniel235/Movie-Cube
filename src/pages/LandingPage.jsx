@@ -147,7 +147,6 @@ export default function LandingPage() {
       if (data.results.length > 0) {
         setApiData(data.results);
       }
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
