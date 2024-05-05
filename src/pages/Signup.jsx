@@ -27,7 +27,7 @@ export default function SignupPage() {
       if (response.status === 200) {
         Alert("success", "Success", "Account created successfully");
         setTimeout(() => {
-          navigate("/login");
+          navigate("/otp", {state: {email}});
         }, 1000);
         setIsLoggedIn(true);
       }

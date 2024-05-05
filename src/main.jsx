@@ -7,6 +7,8 @@ import SignupPage from "./pages/Signup";
 import Layout from "./pages/Layout";
 import Loader from "./components/Loader";
 import Alert from "./components/Alert";
+import SendVerificationOTPPage from "./pages/SendOTP";
+import OtpVerification from "./pages/VerifyOtp";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignupPage />,
+  },
+  {
+    path: "/otp",
+    element: <SendVerificationOTPPage />,
+  },
+  {
+    path: "/verify",
+    element: <OtpVerification />,
   },
 ]);
 

@@ -16,22 +16,25 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        "https://movie-cube-server.onrender.com/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
       if (response.status === 200) {
         Alert("success", "Success", "Logged in successfully");
         setTimeout(() => {
-          navigate("/home");
+          navigate("/home", { state: { email } });
         }, 1000);
       }
     } catch (error) {
       console.log("Login Error: " + error);
       Alert("error", "Error", error?.response?.data.message);
+      console.log(error.response.status);
+      if (error.response.status === 400) {
+        setTimeout(() => {
+          navigate("/otp", {state: {email}});
+        }, 1000);
+      }
     }
     setIsLoading(false);
   };
