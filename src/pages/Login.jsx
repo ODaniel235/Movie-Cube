@@ -30,9 +30,7 @@ export default function LoginPage() {
         }, 1000);
       }
     } catch (error) {
-      console.log("Login Error: " + error);
       Alert("error", "Error", error?.response?.data.message);
-      console.log(error.response.status);
       if (error.response.status === 400) {
         setTimeout(() => {
           navigate("/otp", {state: {email}});

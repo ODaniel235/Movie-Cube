@@ -32,7 +32,6 @@ export default function SignupPage() {
         setIsLoggedIn(true);
       }
     } catch (error) {
-      console.log("Login Error: " + error);
       Alert("error", "Error", error?.response?.data.message);
     }
     setIsLoading(false);

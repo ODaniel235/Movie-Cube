@@ -1,4 +1,4 @@
-import { useNavigate, Route, Routes, useLocation } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -8,8 +8,6 @@ import SingleMoviePage from "./SingleMovie";
 import Trending from "./Trending";
 import Upcoming from "./Upcoming";
 export default function Layout() {
-  const location = useLocation();
-  const {email} = location.state
   const [isAuthorizing, setIsAuthorizing] = useState(true);
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
@@ -24,8 +22,7 @@ export default function Layout() {
           setIsAuthorizing(false);
         }
       } catch (error) {
-        console.log(error);
-        navigate("/login");
+        setIsAuthorizing(false)
       }
     };
     verifyFunction();

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import MovieIcon from "../components/MovieIcon";
 const asideGenre = [
   { name: "Genres", link: "/genres" },
   { name: "Trending", link: "/trending" },
@@ -46,16 +47,7 @@ export default function OutletWrapper(props) {
   return (
     <div className=" w-screen flex flex-row">
       <aside className=" h-screen hidden w-[25%] px-2 sm:flex flex-col gap-3 items-center bg-black md:px-2">
-        <svg
-          className="  mt-6"
-          xmlns="http://www.w3.org/2000/svg"
-          height="60"
-          viewBox="0 -960 960 960"
-          width="60"
-          fill="red"
-        >
-          <path d="m160-800 80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h120q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800Zm0 240v320h640v-320H160Zm0 0v320-320Z"></path>
-        </svg>
+        <MovieIcon className={" mt-6 "} />
         <h2 className="text-[#6E727B] text-2xl font-bold text-nowrap mb-2">
           Movie-Cube
         </h2>
@@ -77,8 +69,10 @@ export default function OutletWrapper(props) {
         ))}
       </aside>
       <nav
-        className={` ${!justLoaded ? 'hidden ' : 'flex'} z-20 w-2/3 flex-col md:hidden top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${
-          menuIsOpend  ? "open-menu" :  "close-menu"
+        className={` ${
+          !justLoaded ? "hidden " : "flex"
+        } z-20 w-2/3 flex-col md:hidden top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${
+          menuIsOpend ? "open-menu" : "close-menu"
         }`}
       >
         {asideGenre.map((genre, index) => (

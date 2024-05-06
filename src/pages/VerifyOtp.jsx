@@ -26,7 +26,6 @@ export default function OtpVerification() {
         }, 1000);
       }
     } catch (error) {
-      console.log(error);
       Alert("error", "Error", error?.response?.data.message);
     }
     setIsLoading(false);

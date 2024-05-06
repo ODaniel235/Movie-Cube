@@ -3,6 +3,7 @@ import Genre from "../components/GenreSelection";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
+import Alert from "../components/Alert";
 export default function LandingPage() {
   axios.defaults.withCredentials = true;
   const [cross, setCross] = useState(false);
@@ -109,7 +110,7 @@ export default function LandingPage() {
         const response = await axios.get(
           `https://movie-cube-server.onrender.com/genre?${selectedGenre}`
         );
-        const data = response.data.data
+        const data = response.data.data;
         setApiData(data.results);
       } catch (error) {
         console.log(error);
@@ -129,7 +130,6 @@ export default function LandingPage() {
           setApiFetching(false);
         }
         setApiData(response.data.data.results);
-        
       } catch (error) {
         console.error();
       }
@@ -143,12 +143,12 @@ export default function LandingPage() {
       const response = await axios.get(
         `https://movie-cube-server.onrender.com/search?${input}`
       );
-      const data = response.data.data
+      const data = response.data.data;
       if (data.results.length > 0) {
         setApiData(data.results);
       }
     } catch (error) {
-      console.log(error);
+      Alert("error", "Error", "Error getting Movie data");
     }
   };
   return (

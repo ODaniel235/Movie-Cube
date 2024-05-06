@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "./index.css";
 import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
+    element: <Navigate to={'/home'} />,
+  },
+  {
+    path: "/home",
     element: <Layout />,
   },
   {

@@ -26,7 +26,6 @@ export default function SendVerificationOTPPage() {
         setIsLoading(false);
       }
     } catch (error) {
-      console.log(error);
       Alert("error", "Error", "Error sending OTP");
       setIsLoading(false);
     }

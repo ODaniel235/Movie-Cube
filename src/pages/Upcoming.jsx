@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
+import Alert from "../components/Alert";
 export default function Upcoming() {
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
@@ -18,7 +19,7 @@ export default function Upcoming() {
         setFetchData(data);
         setIsLoading(false);
       } catch (error) {
-        console.log("This is an error message: " + error);
+        Alert("error", "Error", "Error getting Movie data");
       }
     };
     fetchApiData();

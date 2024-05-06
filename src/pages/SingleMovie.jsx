@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import SwiperJs from "../components/Slider";
+import Alert from "../components/Alert";
 
 export default function SingleMoviePage() {
   axios.defaults.withCredentials = true;
@@ -20,7 +21,7 @@ export default function SingleMoviePage() {
         const response = await axios.get(
           `https://movie-cube-server.onrender.com/title?${Id}`
         );
-        const data = response.data.data
+        const data = response.data.data;
         const videos = data.videos.results;
         const trailer = videos.find(
           (video) => video.type === "Trailer" && video.site === "YouTube"
@@ -31,7 +32,7 @@ export default function SingleMoviePage() {
         await setFetchById(data);
         setIsFetching(false);
       } catch (error) {
-        console.log(error);
+        Alert("error", "Error", "Error getting Movie data");
         navigate("/");
       }
     };

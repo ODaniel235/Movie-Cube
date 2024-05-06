@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
+import Alert from "../components/Alert";
 export default function Trending() {
   const navigate = useNavigate();
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -19,9 +20,9 @@ export default function Trending() {
         );
         const data = response.data.data.results;
         await setTrendingMovies(data);
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (error) {
-        console.log("This is an error message: " + error);
+        Alert("error", "Error", "Error getting Movie data");
       }
     };
     trending();
