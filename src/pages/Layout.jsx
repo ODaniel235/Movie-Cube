@@ -22,7 +22,8 @@ export default function Layout() {
           setIsAuthorizing(false);
         }
       } catch (error) {
-        setIsAuthorizing(false)
+        navigate("/login");
+        setIsAuthorizing(false);
       }
     };
     verifyFunction();
