@@ -13,9 +13,12 @@ export default function OtpVerification() {
   const handleVerifyOtp = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post(`http://localhost:5000/otpv?${email}`, {
-        otp: Number(otp),
-      });
+      const response = await axios.post(
+        `https://movie-cube-server.onrender.com/otpv?${email}`,
+        {
+          otp: Number(otp),
+        }
+      );
       if (response.status === 200) {
         Alert("success", "Success", "User is verified");
         setTimeout(() => {

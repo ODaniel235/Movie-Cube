@@ -16,10 +16,13 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://movie-cube-server.onrender.com/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.status === 200) {
         Alert("success", "Success", "Logged in successfully");
         setTimeout(() => {

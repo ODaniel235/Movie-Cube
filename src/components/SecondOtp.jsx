@@ -5,12 +5,11 @@ export default function MainVerifyOtp({ className }) {
   const [animationData, setAnimationData] = useState(null);
 
   useEffect(() => {
-    // Fetch the animation data asynchronously
     fetch("/VerifyOtp.json?url")
       .then((response) => response.json())
       .then((data) => setAnimationData(data))
       .catch((error) => console.error("Error fetching animation data:", error));
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   const defaultOptions = {
     loop: true,

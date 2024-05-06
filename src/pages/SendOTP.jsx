@@ -14,7 +14,10 @@ export default function SendVerificationOTPPage() {
   const handleSendVerificationOTP = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/otp", { email });
+      const response = await axios.post(
+        "https://movie-cube-server.onrender.com/otp",
+        { email }
+      );
       if (response.status === 200) {
         Alert("success", "Success", "OTP sent successfully");
         setTimeout(() => {
