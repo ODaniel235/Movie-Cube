@@ -22,7 +22,10 @@ export default function Layout() {
           setIsAuthorizing(false);
         }
       } catch (error) {
-        navigate("/login");
+        console.log(error);
+        if(error.response.status === 401){
+          navigate('/login')
+        }
         setIsAuthorizing(false);
       }
     };

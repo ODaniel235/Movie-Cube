@@ -26,7 +26,7 @@ export default function LoginPage() {
       if (response.status === 200) {
         Alert("success", "Success", "Logged in successfully");
         setTimeout(() => {
-          navigate("/home", { state: { email } });
+          navigate("/home");
         }, 1000);
       }
     } catch (error) {
