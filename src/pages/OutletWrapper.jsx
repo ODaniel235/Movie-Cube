@@ -75,6 +75,7 @@ export default function OutletWrapper(props) {
           menuIsOpend ? "open-menu" : "close-menu"
         }`}
       >
+        <MovieIcon className={'w-32 m-0'} />
         {asideGenre.map((genre, index) => (
           <Link
             to={genre.link}
@@ -98,7 +99,7 @@ export default function OutletWrapper(props) {
           setMenuIsOpened(!menuIsOpend);
           setJustLoaded(true);
         }}
-        className={`visible h-20 w-20 rounded-full bg-red-800 bottom-7 right-10 md:hidden z-40 absolute ${
+        className={`visible h-20 w-20 rounded-full bg-red-800 bottom-7 right-10 md:hidden z-50 absolute ${
           menuIsOpend ? "nav-animate" : "nav-close"
         } flex p-1 justify-center items-center`}
       >
