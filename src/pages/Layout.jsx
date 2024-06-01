@@ -21,7 +21,7 @@ export default function Layout() {
         if (response.status === 200) {
           setIsAuthorizing(false);
         }else{
-         navigate('/login)
+         navigate('/login')
          setIsAuthorizing(false);
 }
       } catch (error) {
