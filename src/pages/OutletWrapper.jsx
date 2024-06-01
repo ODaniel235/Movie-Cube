@@ -71,7 +71,7 @@ export default function OutletWrapper(props) {
       <nav
         className={` ${
           !justLoaded ? "hidden " : "flex"
-        } z-20 w-2/3 flex-col md:hidden top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${
+        } z-999 w-2/3 flex-col md:hidden top-[15vh] justify-center items-center left-[15vw] border-2 border-red-600 rounded-lg = bg-black opacity-90  absolute h-2/3 ${
           menuIsOpend ? "open-menu" : "close-menu"
         }`}
       >
