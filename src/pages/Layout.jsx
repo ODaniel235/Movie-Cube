@@ -20,7 +20,10 @@ export default function Layout() {
         );
         if (response.status === 200) {
           setIsAuthorizing(false);
-        }
+        }else{
+         navigate('/login)
+         setIsAuthorizing(false);
+}
       } catch (error) {
         console.log(error);
         navigate('/login')
